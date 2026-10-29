@@ -8,6 +8,16 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+[hidden]{display:none!important}
+.page{display:none;max-width:1200px;margin:0 auto;min-height:80vh;animation:reveal .6s ease}
+.page.active{display:block}
+#page2 #message,#page3 #journey,#page4 #bestMemories,#page5 #loveLetter{display:block!important}
+.page-nav{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:24px auto}
+.back-button{border:2px solid #ffd1e6;border-radius:999px;padding:12px 24px;background:#fff3fa;color:#8a2b62;font-size:16px;font-weight:bold;cursor:pointer}
+#passwordGate{max-width:520px;margin:10vh auto;padding:clamp(24px,5vw,44px);border:2px solid #ffd1e6;border-radius:28px;background:linear-gradient(145deg,#fff8fc,#fff0f7);color:#71365b;box-shadow:0 0 38px #ffb4e788}
+#passwordGate h1{color:#a52d76;font-family:Georgia,serif}
+#passwordInput{width:100%;padding:15px;border:2px solid #eab4d0;border-radius:14px;font-size:18px;margin:12px 0;color:#572747}
+#passwordError{min-height:24px;color:#c01850;font-weight:bold}
 body{
   margin:0;min-height:100vh;padding:20px;text-align:center;
   font-family:Arial,sans-serif;color:white;
@@ -122,9 +132,21 @@ h1{font-size:clamp(24px,5vw,40px)}
 </head>
 
 <body>
-<main>
+<section id="passwordGate" aria-labelledby="gateTitle">
+  <div style="font-size:52px">🔐💗🌸</div>
+  <h1 id="gateTitle">A Little Birthday Surprise</h1>
+  <p>Enter the secret password to open your special birthday pages. ❤️</p>
+  <form id="passwordForm">
+    <label for="passwordInput"><strong>Password</strong></label>
+    <input id="passwordInput" type="password" placeholder="Enter the password" autocomplete="off" required>
+    <button class="next-button" type="submit">🔓 Unlock My Surprise</button>
+    <p id="passwordError" role="alert" aria-live="polite"></p>
+  </form>
+</section>
+<main id="siteContent" hidden>
+<div class="page active" id="page1">
 <h1>🎈 Please Click All 6 Balloons One by One! 🎈</h1>
-<p>Pop every balloon to unlock a special birthday surprise. 💖</p>
+<p>Pop every balloon to open the next birthday page. 💖</p>
 <div id="progress">0 of 6 balloons popped!</div>
 <div id="track"><div id="bar"></div></div>
 
@@ -138,7 +160,9 @@ h1{font-size:clamp(24px,5vw,40px)}
 </div>
 
 <p id="hint">Click each balloon once. Sparkles will appear! ✨</p>
+</div>
 
+<div class="page" id="page2">
 <section id="message">
   <div class="floral-decoration">🌿 🌸 🌿 🌼 🌿</div>
   <h2 class="floral-title">Happy Birthday</h2>
@@ -188,9 +212,11 @@ h1{font-size:clamp(24px,5vw,40px)}
     <p>Wishing you endless smiles and beautiful memories.</p>
   </div>
   <div class="floral-decoration">🌼 🌿 🦋 🌿 🌼</div>
-  <button type="button" class="next-button" id="nextButton">🎁 NEXT 🌸</button>
+  <div class="page-nav"><button type="button" class="back-button" data-page="page1">← Back</button><button type="button" class="next-button" id="nextButton">🎁 NEXT 🌸</button></div>
 </section>
+</div>
 
+<div class="page" id="page3">
 <section id="journey">
   <div class="floral-decoration">🌷 🌿 💗 🌿 🌷</div>
   <h2>Our Journey Story</h2>
@@ -232,7 +258,7 @@ h1{font-size:clamp(24px,5vw,40px)}
       <h3 class="event-title">🎉 Engagement + Reception</h3>
       <div class="photo-frame">
         <img src="photos/photo-3.jpg" alt="Engagement and Reception" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <span class="photo-placeholder">📷 Add your photo<br>Save it as <code>photos/photo-3.jpg</code></span>
+        <span class="photo-placeholder">📷 Waiting for our Engagement and Reception photo<br>Save it as <code>photos/photo-3.jpg</code></span>
       </div>
       <p class="memory-caption">A day to celebrate our love with the people closest to us. 💍</p>
     </article>
@@ -241,20 +267,22 @@ h1{font-size:clamp(24px,5vw,40px)}
       <h3 class="event-title">💍 Our Marriage ✨</h3>
       <div class="photo-frame">
         <img src="photos/photo-4.jpg" alt="Our Marriage" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-        <span class="photo-placeholder">📷 Add your wedding photo<br>Save it as <code>photos/photo-4.jpg</code></span>
+        <span class="photo-placeholder">📷 Waiting for our wedding photo<br>Save it as <code>photos/photo-4.jpg</code></span>
       </div>
       <p class="memory-caption">Our forever begins here. To a lifetime of love, laughter, and togetherness. ❤️</p>
     </article>
   </div>
   <div class="floral-decoration">🌼 🌿 🦋 🌿 🌼</div>
   <p class="journey-intro">The best chapters are still ahead of us. 💝</p>
-  <button type="button" class="next-button" id="memoriesNextButton">🎁 NEXT 💖</button>
+  <div class="page-nav"><button type="button" class="back-button" data-page="page2">← Back</button><button type="button" class="next-button" id="memoriesNextButton">🎁 NEXT 💖</button></div>
 </section>
+</div>
 
+<div class="page" id="page4">
 <section id="bestMemories">
   <div class="floral-decoration">🌸 🌿 💗 🌿 🌸</div>
   <h2>Best Memories</h2>
-  <p class="journey-intro">Six little frames, a lifetime of beautiful memories. 💕</p>
+  <p class="journey-intro"> little frames, a lifetime of beautiful memories. 💕</p>
   <div class="best-memory-grid">
     <article class="best-memory-card">
       <img src="photos/best-memory-1.jpg" alt="Best memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
@@ -289,9 +317,11 @@ h1{font-size:clamp(24px,5vw,40px)}
   </div>
   <div class="floral-decoration">🌼 🌿 🦋 🌿 🌼</div>
   <p class="journey-intro">Every memory with you is a little piece of forever. 💝</p>
-  <button type="button" class="next-button" id="letterNextButton">💌 NEXT, MY LOVE ❤️</button>
+  <div class="page-nav"><button type="button" class="back-button" data-page="page3">← Back</button><button type="button" class="next-button" id="letterNextButton">💌 NEXT, MY LOVE ❤️</button></div>
 </section>
+</div>
 
+<div class="page" id="page5">
 <section id="loveLetter">
   <div class="cinema-stars" aria-hidden="true"></div>
   <p class="letter-kicker">A little letter from my heart</p>
@@ -306,7 +336,9 @@ h1{font-size:clamp(24px,5vw,40px)}
     <p class="letter-signoff"><strong>Happiest birthday once again to my Pondattiiiiiiiiii!</strong> ❤️😘</p>
   </div>
   <p class="music-note" id="musicNote">🎵 A soft romantic melody will begin when this letter opens. ❤️</p>
+  <div class="page-nav"><button type="button" class="back-button" data-page="page4">← Back to Memories</button></div>
 </section>
+</div>
 </main>
 
 <script>
@@ -319,6 +351,30 @@ h1{font-size:clamp(24px,5vw,40px)}
   const hint = $("hint");
   const message = $("message");
   const nextButton = $("nextButton");
+  const siteContent = $("siteContent");
+  const passwordGate = $("passwordGate");
+  const passwordForm = $("passwordForm");
+  const passwordInput = $("passwordInput");
+  const passwordError = $("passwordError");
+
+  function showPage(pageId) {
+    document.querySelectorAll(".page").forEach(page => page.classList.toggle("active", page.id === pageId));
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+  document.querySelectorAll("[data-page]").forEach(button => button.addEventListener("click", () => showPage(button.dataset.page)));
+  passwordForm.addEventListener("submit", event => {
+    event.preventDefault();
+    if (passwordInput.value === "Rajmalar") {
+      passwordError.textContent = "";
+      passwordGate.hidden = true;
+      siteContent.hidden = false;
+      showPage("page1");
+    } else {
+      passwordError.textContent = "Incorrect password. Please try again. 💗";
+      passwordInput.value = "";
+      passwordInput.focus();
+    }
+  });
 
   let count = 0;
 
@@ -375,7 +431,7 @@ h1{font-size:clamp(24px,5vw,40px)}
         confetti(50);
         setTimeout(()=>{
           message.style.display = "block";
-          message.scrollIntoView({behavior:"smooth",block:"start"});
+          showPage("page2");
           confetti(100);
         },500);
       }
@@ -383,16 +439,12 @@ h1{font-size:clamp(24px,5vw,40px)}
   });
 
   nextButton.addEventListener("click",()=>{
-    $("journey").style.display = "block";
-    nextButton.style.display = "none";
-    $("journey").scrollIntoView({behavior:"smooth",block:"start"});
+    showPage("page3");
     confetti(45);
   });
 
   $("memoriesNextButton").addEventListener("click",()=>{
-    $("bestMemories").style.display = "block";
-    $("memoriesNextButton").style.display = "none";
-    $("bestMemories").scrollIntoView({behavior:"smooth",block:"start"});
+    showPage("page4");
     confetti(55);
   });
 
@@ -459,9 +511,7 @@ h1{font-size:clamp(24px,5vw,40px)}
   }
 
   $("letterNextButton").addEventListener("click",async()=>{
-    $("loveLetter").style.display = "block";
-    $("letterNextButton").style.display = "none";
-    $("loveLetter").scrollIntoView({behavior:"smooth",block:"start"});
+    showPage("page5");
     confetti(65);
     await startMusic();
   });
