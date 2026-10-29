@@ -4,322 +4,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Birthday Surprise for Kodi Malar 🎂</title>
+<title>Birthday Surprise for Kodi Malar</title>
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
 body {
+    margin: 0;
     min-height: 100vh;
-    overflow-x: hidden;
-    font-family: "Trebuchet MS", Arial, sans-serif;
+    padding: 20px;
     text-align: center;
+    font-family: Arial, sans-serif;
     color: white;
     background: linear-gradient(135deg, #29104a, #8c267f, #ff719a);
 }
 
-.page-title {
-    padding: 28px 15px 12px;
-    font-size: clamp(23px, 5vw, 38px);
-    text-shadow: 0 0 18px #ffb5e8;
+h1 {
+    font-size: clamp(24px, 5vw, 40px);
 }
 
-.instruction {
-    font-size: 17px;
-    margin: 10px 15px;
-    line-height: 1.6;
-}
-
-.game-area {
-    max-width: 850px;
-    margin: 25px auto;
-    padding: 20px;
-}
-
-.balloon-container {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(80px, 1fr));
-    gap: 25px;
-    max-width: 650px;
-    margin: 35px auto;
-}
-
-.balloon-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    min-width: 0;
-    color: white;
-    transition: transform 0.2s;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.balloon-button:hover:not(:disabled) {
-    transform: translateY(-8px) scale(1.06);
-}
-
-.balloon-button:focus-visible {
-    outline: 3px solid white;
-    outline-offset: 6px;
-    border-radius: 20px;
-}
-
-.balloon {
-    position: relative;
-    width: 100px;
-    height: 125px;
-    max-width: 100%;
-    margin: auto;
-    border-radius: 50% 50% 45% 45%;
-    box-shadow: inset -10px -9px 15px #0003,
-                inset 8px 8px 14px #ffffff66,
-                0 0 22px #ffffff22;
-    animation: float 2.5s ease-in-out infinite;
-}
-
-.balloon::before {
-    content: "";
-    position: absolute;
-    bottom: -9px;
-    left: 43%;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 12px solid var(--balloon-color);
-}
-
-.balloon::after {
-    content: "";
-    position: absolute;
-    top: 125px;
-    left: 50%;
-    width: 2px;
-    height: 45px;
-    background: #ffffffbb;
-}
-
-.balloon-number {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 0 2px 5px #3338;
-}
-
-.balloon-button:nth-child(2) .balloon {
-    animation-delay: .3s;
-}
-
-.balloon-button:nth-child(3) .balloon {
-    animation-delay: .6s;
-}
-
-.balloon-button:nth-child(4) .balloon {
-    animation-delay: .2s;
-}
-
-.balloon-button:nth-child(5) .balloon {
-    animation-delay: .5s;
-}
-
-.balloon-button:nth-child(6) .balloon {
-    animation-delay: .8s;
-}
-
-.balloon-button:disabled {
-    cursor: default;
-}
-
-.balloon-button.popped .balloon {
-    animation: pop .35s forwards;
-}
-
-.balloon-button.popped .balloon-number {
-    display: none;
-}
-
-.balloon-button.popped .balloon::after,
-.balloon-button.popped .balloon::before {
-    display: none;
-}
-
-.balloon-button.popped .balloon {
-    background: transparent !important;
-    box-shadow: none;
-}
-
-.balloon-button.popped .balloon::after {
-    content: "✨";
-    display: block;
-    position: absolute;
-    inset: 25px 0 auto;
-    width: 100%;
-    height: auto;
-    background: none;
-    font-size: 45px;
-    animation: sparkle .7s ease-out;
-}
-
-.balloon-label {
-    display: block;
-    margin-top: 28px;
-    font-size: 14px;
-}
-
-.progress {
+#progress {
     font-size: 20px;
     font-weight: bold;
-    margin: 22px 0;
     color: #fff4a8;
+    margin: 22px;
 }
 
-.progress-track {
+#track {
     height: 12px;
-    max-width: 400px;
-    margin: 12px auto;
-    background: #ffffff40;
+    max-width: 420px;
+    margin: 0 auto 24px;
+    background: #ffffff55;
     border-radius: 20px;
     overflow: hidden;
 }
 
-.progress-fill {
-    width: 0%;
+#bar {
     height: 100%;
-    background: linear-gradient(90deg, #fff176, #ffb4d8);
-    border-radius: 20px;
-    transition: width .4s ease;
+    width: 0;
+    background: #fff176;
+    transition: width .3s;
 }
 
-.hint {
-    color: #ffe5f3;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(70px, 120px));
+    justify-content: center;
+    gap: 28px 20px;
+    margin: 30px auto;
+    max-width: 500px;
+}
+
+.balloon-btn {
+    border: 0;
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
+.balloon {
+    height: 110px;
+    width: 80px;
+    margin: auto;
+    position: relative;
+    border-radius: 50%;
+    background: var(--c);
+    box-shadow: inset -9px -8px 14px #0003,
+                inset 8px 7px 12px #fff8;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    font-weight: bold;
+    animation: float 2s infinite;
+}
+
+.balloon:before {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 12px solid var(--c);
+}
+
+.balloon:after {
+    content: "";
+    position: absolute;
+    top: 110px;
+    width: 2px;
+    height: 28px;
+    background: #ffffffbb;
+}
+
+.balloon-btn:disabled {
+    cursor: default;
+}
+
+.balloon-btn.popped .balloon {
+    animation: pop .35s forwards;
+}
+
+.balloon-btn.popped .balloon:after {
+    content: "✨";
+    top: 25px;
+    width: auto;
+    height: auto;
+    background: none;
+    font-size: 38px;
+}
+
+.balloon-btn.popped .balloon:before {
+    display: none;
+}
+
+.label {
+    display: block;
+    margin-top: 20px;
     font-size: 14px;
-    margin-top: 15px;
 }
 
-#birthdayMessage {
+#message {
     display: none;
     max-width: 700px;
-    margin: 35px auto;
-    padding: 30px 20px;
-    border: 1px solid #ffffff80;
-    border-radius: 25px;
+    margin: 32px auto;
+    padding: 25px;
+    border: 1px solid #ffffff88;
+    border-radius: 24px;
     background: #ffffff20;
-    box-shadow: 0 0 35px #ffb4e7aa;
-    animation: reveal 1s ease both;
+    box-shadow: 0 0 30px #ffb4e7aa;
 }
 
-#birthdayMessage h2 {
-    font-size: clamp(30px, 6vw, 48px);
-    margin-bottom: 20px;
+#message h2 {
+    font-size: clamp(28px, 5vw, 42px);
     color: #fff4a8;
 }
 
-#birthdayMessage p {
-    font-size: 18px;
-    line-height: 1.9;
-}
-
 .cake {
-    font-size: 90px;
-    margin: 20px 0;
-    animation: cakeBounce 1s infinite alternate;
-}
-
-.final-sparkles {
-    font-size: 30px;
-    margin-top: 20px;
+    font-size: 86px;
+    animation: bounce .7s infinite alternate;
 }
 
 .confetti {
     position: fixed;
     top: -30px;
+    z-index: 5;
     pointer-events: none;
-    z-index: 1000;
     animation: fall linear forwards;
 }
 
-footer {
-    padding: 20px;
-    font-size: 14px;
-    color: #ffe5f3;
-}
-
 @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-10px) rotate(2deg); }
+    50% {
+        transform: translateY(-9px) rotate(2deg);
+    }
 }
 
 @keyframes pop {
-    0% { transform: scale(1); opacity: 1; }
-    45% { transform: scale(1.35); opacity: .8; }
-    100% { transform: scale(0); opacity: 0; }
-}
-
-@keyframes sparkle {
-    0% { transform: scale(.3) rotate(0); opacity: 0; }
-    60% { transform: scale(1.5) rotate(25deg); opacity: 1; }
-    100% { transform: scale(1) rotate(0); opacity: 1; }
-}
-
-@keyframes reveal {
-    from { opacity: 0; transform: translateY(30px) scale(.9); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes cakeBounce {
-    from { transform: translateY(0) rotate(-4deg); }
-    to { transform: translateY(-12px) rotate(4deg); }
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(720deg);
+    50% {
+        transform: scale(1.3);
+        opacity: .7;
+    }
+    100% {
+        transform: scale(0);
         opacity: 0;
     }
 }
 
-@media (max-width: 480px) {
-    .balloon-container {
-        gap: 22px 8px;
-        padding: 0 4px;
-    }
-
-    .balloon {
-        width: 72px;
-        height: 94px;
-    }
-
-    .balloon::after {
-        top: 94px;
-        height: 32px;
-    }
-
-    .balloon-number {
-        font-size: 23px;
-    }
-
-    .balloon-label {
-        margin-top: 24px;
-        font-size: 12px;
-    }
-
-    .game-area {
-        padding: 10px;
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(700deg);
+        opacity: 0;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
+@keyframes bounce {
+    to {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+@media (max-width: 400px) {
+    .grid {
+        gap: 25px 8px;
+    }
+
+    .balloon {
+        width: 65px;
+        height: 90px;
+    }
+
+    .balloon:after {
+        top: 90px;
+    }
+
+    .label {
+        font-size: 12px;
     }
 }
 </style>
@@ -327,216 +207,210 @@ footer {
 
 <body>
 
-<h1 class="page-title">
-    🎈 Please Click All 6 Balloons One by One! 🎈
-</h1>
+<h1>🎈 Please Click All 6 Balloons One by One! 🎈</h1>
 
-<p class="instruction">
-    Each balloon has a little surprise. Pop all six to reveal your birthday wishes! 💖
+<p>Pop every balloon to unlock a special birthday surprise. 💖</p>
+
+<div id="progress">0 of 6 balloons popped!</div>
+
+<div id="track">
+    <div id="bar"></div>
+</div>
+
+<div class="grid">
+
+    <button class="balloon-btn" aria-label="Pop balloon 1">
+        <span class="balloon" style="--c:#ff477e">1</span>
+        <span class="label">Balloon 1</span>
+    </button>
+
+    <button class="balloon-btn" aria-label="Pop balloon 2">
+        <span class="balloon" style="--c:#ff9f1c">2</span>
+        <span class="label">Balloon 2</span>
+    </button>
+
+    <button class="balloon-btn" aria-label="Pop balloon 3">
+        <span class="balloon" style="--c:#a55cff">3</span>
+        <span class="label">Balloon 3</span>
+    </button>
+
+    <button class="balloon-btn" aria-label="Pop balloon 4">
+        <span class="balloon" style="--c:#20c9c3">4</span>
+        <span class="label">Balloon 4</span>
+    </button>
+
+    <button class="balloon-btn" aria-label="Pop balloon 5">
+        <span class="balloon" style="--c:#ff65b3">5</span>
+        <span class="label">Balloon 5</span>
+    </button>
+
+    <button class="balloon-btn" aria-label="Pop balloon 6">
+        <span class="balloon" style="--c:#4acb64">6</span>
+        <span class="label">Balloon 6</span>
+    </button>
+
+</div>
+
+<p id="hint">
+    Click each balloon once. Sparkles will appear! ✨
 </p>
 
-<main class="game-area">
+<section id="message">
 
-    <div class="balloon-container" id="balloonContainer">
+    <h2>🎉 Happy Birthday, Kodi Malar! 🎉</h2>
 
-        <button class="balloon-button" aria-label="Pop balloon 1">
-            <div class="balloon" style="--balloon-color:#ff477e; background:linear-gradient(135deg,#ff82ac,#ff2866)">
-                <span class="balloon-number">1</span>
-            </div>
-            <span class="balloon-label">Balloon 1</span>
-        </button>
+    <div class="cake">🎂</div>
 
-        <button class="balloon-button" aria-label="Pop balloon 2">
-            <div class="balloon" style="--balloon-color:#ffad32; background:linear-gradient(135deg,#ffe082,#ff8c24)">
-                <span class="balloon-number">2</span>
-            </div>
-            <span class="balloon-label">Balloon 2</span>
-        </button>
+    <p>Surprise! You popped all six balloons! 💖</p>
 
-        <button class="balloon-button" aria-label="Pop balloon 3">
-            <div class="balloon" style="--balloon-color:#a55cff; background:linear-gradient(135deg,#d8a2ff,#8b3dff)">
-                <span class="balloon-number">3</span>
-            </div>
-            <span class="balloon-label">Balloon 3</span>
-        </button>
-
-        <button class="balloon-button" aria-label="Pop balloon 4">
-            <div class="balloon" style="--balloon-color:#29c9c3; background:linear-gradient(135deg,#9afff4,#00b9b0)">
-                <span class="balloon-number">4</span>
-            </div>
-            <span class="balloon-label">Balloon 4</span>
-        </button>
-
-        <button class="balloon-button" aria-label="Pop balloon 5">
-            <div class="balloon" style="--balloon-color:#ff79c6; background:linear-gradient(135deg,#ffc0e6,#ff4da6)">
-                <span class="balloon-number">5</span>
-            </div>
-            <span class="balloon-label">Balloon 5</span>
-        </button>
-
-        <button class="balloon-button" aria-label="Pop balloon 6">
-            <div class="balloon" style="--balloon-color:#54d66b; background:linear-gradient(135deg,#b5ff9c,#22b84a)">
-                <span class="balloon-number">6</span>
-            </div>
-            <span class="balloon-label">Balloon 6</span>
-        </button>
-
-    </div>
-
-    <div class="progress" id="progressText" aria-live="polite">
-        🎯 0 of 6 balloons popped!
-    </div>
-
-    <div class="progress-track" aria-label="Balloon progress">
-        <div class="progress-fill" id="progressFill"></div>
-    </div>
-
-    <p class="hint" id="hintText">
-        Tap or click each balloon to pop it. Your surprise is waiting! 🎁
+    <p>
+        May your day be filled with happiness,
+        laughter, love, and beautiful memories.
     </p>
 
-    <section id="birthdayMessage" aria-live="polite">
-        <h2>🎉 Happy Birthday! 🎉</h2>
+    <p>
+        May all your dreams come true.
+        Keep shining and smiling. 🌸
+    </p>
 
-        <h2 style="color:white;">Kodi Malar 💖</h2>
+    <h2 style="color:white">
+        Wishing you the happiest birthday ever! 💝
+    </h2>
 
-        <div class="cake">🎂</div>
-
-        <p>
-            Surprise! You popped all six balloons! 🎈
-            <br><br>
-            May your special day be filled with endless happiness,
-            beautiful memories, laughter, and love.
-            <br><br>
-            May all your dreams come true and may every day
-            bring a new reason to smile. 🌸
-            <br><br>
-            Keep shining, keep smiling, and always be amazing!
-            <br><br>
-            Wishing you the happiest birthday ever! 💝
-        </p>
-
-        <div class="final-sparkles">🎁 💐 ✨ 💖 🥳</div>
-    </section>
-
-</main>
-
-<footer>
-    Made with love ❤️ especially for Kodi Malar
-</footer>
+</section>
 
 <script>
-const balloons = document.querySelectorAll(".balloon-button");
-const progressText = document.getElementById("progressText");
-const progressFill = document.getElementById("progressFill");
-const hintText = document.getElementById("hintText");
-const birthdayMessage = document.getElementById("birthdayMessage");
+const buttons = [
+    ...document.querySelectorAll(".balloon-btn")
+];
 
-let poppedCount = 0;
+const progress = document.getElementById("progress");
+const bar = document.getElementById("bar");
+const hint = document.getElementById("hint");
+const message = document.getElementById("message");
 
-balloons.forEach((button) => {
-    button.addEventListener("click", () => {
-        // Prevent clicking the same balloon more than once.
-        if (button.disabled) return;
+let count = 0;
 
-        button.disabled = true;
-        button.classList.add("popped");
-        poppedCount++;
-
-        // Show a little burst of celebration at the balloon.
-        createBurst(button);
-
-        // Update the progress counter and progress bar.
-        progressText.textContent =
-            `🎯 ${poppedCount} of 6 balloons popped!`;
-
-        progressFill.style.width =
-            `${(poppedCount / balloons.length) * 100}%`;
-
-        if (poppedCount < balloons.length) {
-            hintText.textContent =
-                `Amazing! ✨ ${balloons.length - poppedCount} more balloon(s) to go!`;
-        }
-
-        // Reveal the birthday message only after all six are clicked.
-        if (poppedCount === balloons.length) {
-            hintText.textContent =
-                "You did it! All balloons popped! Your surprise is here! 💖";
-
-            setTimeout(() => {
-                birthdayMessage.style.display = "block";
-                birthdayMessage.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-                launchConfetti(100);
-            }, 500);
-        }
-    });
-});
-
-function createBurst(button) {
-    const rect = button.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const effects = ["✨", "💖", "⭐", "🎉", "💫", "💕"];
+// Create a burst of sparkles whenever a balloon is clicked.
+function burst(x, y) {
+    const symbols = ["✨", "💖", "⭐", "🎉", "💫"];
 
     for (let i = 0; i < 12; i++) {
-        const particle = document.createElement("span");
-        particle.textContent =
-            effects[Math.floor(Math.random() * effects.length)];
+        const element = document.createElement("span");
 
-        particle.style.position = "fixed";
-        particle.style.left = centerX + "px";
-        particle.style.top = centerY + "px";
-        particle.style.fontSize = "22px";
-        particle.style.pointerEvents = "none";
-        particle.style.zIndex = "2000";
+        element.textContent = symbols[
+            Math.floor(Math.random() * symbols.length)
+        ];
 
-        document.body.appendChild(particle);
+        element.style.cssText =
+            "position:fixed;left:" + x + "px;top:" + y +
+            "px;z-index:20;pointer-events:none;font-size:22px";
 
-        const angle = (Math.PI * 2 * i) / 12;
-        const distance = 50 + Math.random() * 65;
+        document.body.appendChild(element);
 
-        const animation = particle.animate([
+        const angle = Math.PI * 2 * i / 12;
+        const distance = 45 + Math.random() * 55;
+
+        const animation = element.animate([
             {
-                transform: "translate(-50%, -50%) scale(.3)",
+                transform: "translate(-50%,-50%) scale(.4)",
                 opacity: 1
             },
             {
                 transform:
-                    `translate(calc(-50% + ${Math.cos(angle) * distance}px), calc(-50% + ${Math.sin(angle) * distance}px)) scale(1.3)`,
+                    "translate(" +
+                    Math.cos(angle) * distance + "px," +
+                    Math.sin(angle) * distance +
+                    "px) scale(1.3)",
                 opacity: 0
             }
         ], {
-            duration: 650 + Math.random() * 250,
+            duration: 700,
             easing: "ease-out"
         });
 
-        animation.onfinish = () => particle.remove();
+        animation.onfinish = () => element.remove();
     }
 }
 
-function launchConfetti(amount) {
-    const emojis = ["🎉", "💖", "✨", "🎈", "🌸", "💝", "⭐"];
+// Create falling celebration confetti.
+function confetti(amount) {
+    const symbols = [
+        "🎉", "💖", "✨", "🎈", "🌸", "💝", "⭐"
+    ];
 
     for (let i = 0; i < amount; i++) {
-        const piece = document.createElement("span");
-        piece.className = "confetti";
-        piece.textContent =
-            emojis[Math.floor(Math.random() * emojis.length)];
+        const element = document.createElement("span");
 
-        piece.style.left = Math.random() * 100 + "vw";
-        piece.style.fontSize = (14 + Math.random() * 20) + "px";
-        piece.style.animationDuration =
-            (2 + Math.random() * 3) + "s";
+        element.className = "confetti";
+        element.textContent = symbols[
+            Math.floor(Math.random() * symbols.length)
+        ];
 
-        document.body.appendChild(piece);
+        element.style.left = Math.random() * 100 + "vw";
+        element.style.fontSize =
+            (14 + Math.random() * 18) + "px";
 
-        piece.addEventListener("animationend", () => piece.remove());
+        element.style.animationDuration =
+            (2 + Math.random() * 2.5) + "s";
+
+        document.body.appendChild(element);
+
+        element.addEventListener("animationend", () => {
+            element.remove();
+        });
     }
 }
+
+// Handle balloon clicks.
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+
+        // Prevent the same balloon being counted twice.
+        if (button.disabled) return;
+
+        button.disabled = true;
+        button.classList.add("popped");
+        count++;
+
+        const rect = button.getBoundingClientRect();
+
+        burst(
+            rect.left + rect.width / 2,
+            rect.top + rect.height / 2
+        );
+
+        // Update the counter and progress bar.
+        progress.textContent =
+            count + " of 6 balloons popped!";
+
+        bar.style.width = (count / 6 * 100) + "%";
+
+        if (count < 6) {
+            hint.textContent =
+                "Wonderful! " + (6 - count) +
+                " more balloon(s) to go! 🎈";
+        } else {
+
+            // Reveal the birthday surprise only after all six clicks.
+            hint.textContent =
+                "You did it! Your birthday surprise is unlocked! 🎊";
+
+            confetti(45);
+
+            setTimeout(() => {
+                message.style.display = "block";
+
+                message.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                confetti(90);
+            }, 450);
+        }
+    });
+});
 </script>
 
 </body>
