@@ -4,203 +4,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Surprise for Kodi Malar</title>
+<title>Happy Birthday Kodimalar 🌸</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    padding:20px;
+    text-align:center;
+    font-family:Arial,sans-serif;
+    color:white;
+    background:linear-gradient(135deg,#29104a,#8c267f,#ff719a);
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    padding: 20px;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    color: white;
-    background: linear-gradient(135deg, #29104a, #8c267f, #ff719a);
+h1{font-size:clamp(24px,5vw,40px)}
+
+#progress{
+    font-size:20px;
+    font-weight:bold;
+    color:#fff4a8;
+    margin:22px;
 }
 
-h1 {
-    font-size: clamp(24px, 5vw, 40px);
+#track{
+    height:12px;
+    max-width:420px;
+    margin:0 auto 24px;
+    background:#ffffff55;
+    border-radius:20px;
+    overflow:hidden;
 }
 
-#progress {
-    font-size: 20px;
-    font-weight: bold;
-    color: #fff4a8;
-    margin: 22px;
+#bar{
+    height:100%;
+    width:0;
+    background:#fff176;
+    transition:width .3s;
 }
 
-#track {
-    height: 12px;
-    max-width: 420px;
-    margin: 0 auto 24px;
-    background: #ffffff55;
-    border-radius: 20px;
-    overflow: hidden;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(70px,120px));
+    justify-content:center;
+    gap:28px 20px;
+    margin:30px auto;
+    max-width:500px;
 }
 
-#bar {
-    height: 100%;
-    width: 0;
-    background: #fff176;
-    transition: width .3s;
+.balloon-btn{
+    border:0;
+    background:none;
+    color:white;
+    cursor:pointer;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(70px, 120px));
-    justify-content: center;
-    gap: 28px 20px;
-    margin: 30px auto;
-    max-width: 500px;
+.balloon{
+    height:110px;
+    width:80px;
+    margin:auto;
+    position:relative;
+    border-radius:50%;
+    background:var(--c);
+    box-shadow:inset -9px -8px 14px #0003,
+               inset 8px 7px 12px #fff8;
+    display:grid;
+    place-items:center;
+    font-size:25px;
+    font-weight:bold;
+    animation:float 2s infinite;
 }
 
-.balloon-btn {
-    border: 0;
-    background: none;
-    color: white;
-    cursor: pointer;
+.balloon:before{
+    content:"";
+    position:absolute;
+    bottom:-8px;
+    border-left:7px solid transparent;
+    border-right:7px solid transparent;
+    border-bottom:12px solid var(--c);
 }
 
-.balloon {
-    height: 110px;
-    width: 80px;
-    margin: auto;
-    position: relative;
-    border-radius: 50%;
-    background: var(--c);
-    box-shadow: inset -9px -8px 14px #0003,
-                inset 8px 7px 12px #fff8;
-    display: grid;
-    place-items: center;
-    font-size: 25px;
-    font-weight: bold;
-    animation: float 2s infinite;
+.balloon:after{
+    content:"";
+    position:absolute;
+    top:110px;
+    width:2px;
+    height:28px;
+    background:#ffffffbb;
 }
 
-.balloon:before {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 12px solid var(--c);
+.balloon-btn:disabled{cursor:default}
+
+.balloon-btn.popped .balloon{
+    animation:pop .35s forwards;
 }
 
-.balloon:after {
-    content: "";
-    position: absolute;
-    top: 110px;
-    width: 2px;
-    height: 28px;
-    background: #ffffffbb;
+.balloon-btn.popped .balloon:after{
+    content:"✨";
+    top:25px;
+    width:auto;
+    height:auto;
+    background:none;
+    font-size:38px;
 }
 
-.balloon-btn:disabled {
-    cursor: default;
+.balloon-btn.popped .balloon:before{display:none}
+
+.label{
+    display:block;
+    margin-top:20px;
+    font-size:14px;
 }
 
-.balloon-btn.popped .balloon {
-    animation: pop .35s forwards;
+/* Floral birthday reveal */
+#message{
+    display:none;
+    max-width:1000px;
+    margin:35px auto;
+    padding:clamp(15px,4vw,35px);
+    color:#174d27;
+    border:3px solid #c8dca5;
+    border-radius:24px;
+    background:
+      radial-gradient(ellipse at top,#fffef0,#fff5d8 65%,#e9f4d6);
+    box-shadow:0 0 35px #ffd7e9;
+    overflow:hidden;
+    animation:reveal 1.2s ease;
 }
 
-.balloon-btn.popped .balloon:after {
-    content: "✨";
-    top: 25px;
-    width: auto;
-    height: auto;
-    background: none;
-    font-size: 38px;
+.floral-title{
+    margin:10px 0;
+    font-family:"Brush Script MT","Segoe Script",cursive;
+    font-size:clamp(35px,8vw,80px);
+    color:#14552a;
+    text-shadow:1px 2px 2px #a6c995;
 }
 
-.balloon-btn.popped .balloon:before {
-    display: none;
+.garden-subtitle{
+    font-size:clamp(15px,3vw,22px);
+    line-height:1.5;
+    font-style:italic;
 }
 
-.label {
-    display: block;
-    margin-top: 20px;
-    font-size: 14px;
+.name-art{
+    display:block;
+    width:100%;
+    height:auto;
+    margin:5px auto 10px;
+    overflow:visible;
 }
 
-#message {
-    display: none;
-    max-width: 700px;
-    margin: 32px auto;
-    padding: 25px;
-    border: 1px solid #ffffff88;
-    border-radius: 24px;
-    background: #ffffff20;
-    box-shadow: 0 0 30px #ffb4e7aa;
+.floral-message{
+    font-family:Georgia,serif;
+    font-size:clamp(16px,3vw,22px);
+    line-height:1.8;
+    color:#24552e;
 }
 
-#message h2 {
-    font-size: clamp(28px, 5vw, 42px);
-    color: #fff4a8;
+.floral-decoration{
+    font-size:clamp(25px,5vw,42px);
+    margin:12px;
+    letter-spacing:5px;
 }
 
-.cake {
-    font-size: 86px;
-    animation: bounce .7s infinite alternate;
+.cake{
+    font-size:80px;
+    animation:bounce .8s infinite alternate;
 }
 
-.confetti {
-    position: fixed;
-    top: -30px;
-    z-index: 5;
-    pointer-events: none;
-    animation: fall linear forwards;
+.confetti{
+    position:fixed;
+    top:-30px;
+    z-index:10;
+    pointer-events:none;
+    animation:fall linear forwards;
 }
 
-@keyframes float {
-    50% {
-        transform: translateY(-9px) rotate(2deg);
-    }
+@keyframes float{
+    50%{transform:translateY(-9px) rotate(2deg)}
 }
 
-@keyframes pop {
-    50% {
-        transform: scale(1.3);
-        opacity: .7;
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
+@keyframes pop{
+    50%{transform:scale(1.3);opacity:.7}
+    100%{transform:scale(0);opacity:0}
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(700deg);
-        opacity: 0;
-    }
+@keyframes fall{
+    to{transform:translateY(110vh) rotate(700deg);opacity:0}
 }
 
-@keyframes bounce {
-    to {
-        transform: translateY(-10px) rotate(3deg);
-    }
+@keyframes bounce{
+    to{transform:translateY(-10px) rotate(3deg)}
 }
 
-@media (max-width: 400px) {
-    .grid {
-        gap: 25px 8px;
-    }
+@keyframes reveal{
+    from{opacity:0;transform:translateY(25px) scale(.95)}
+    to{opacity:1;transform:translateY(0) scale(1)}
+}
 
-    .balloon {
-        width: 65px;
-        height: 90px;
-    }
-
-    .balloon:after {
-        top: 90px;
-    }
-
-    .label {
-        font-size: 12px;
-    }
+@media(max-width:400px){
+    .grid{gap:25px 8px}
+    .balloon{width:65px;height:90px}
+    .balloon:after{top:90px}
+    .label{font-size:12px}
 }
 </style>
 </head>
@@ -213,12 +220,9 @@ h1 {
 
 <div id="progress">0 of 6 balloons popped!</div>
 
-<div id="track">
-    <div id="bar"></div>
-</div>
+<div id="track"><div id="bar"></div></div>
 
 <div class="grid">
-
     <button class="balloon-btn" aria-label="Pop balloon 1">
         <span class="balloon" style="--c:#ff477e">1</span>
         <span class="label">Balloon 1</span>
@@ -248,42 +252,105 @@ h1 {
         <span class="balloon" style="--c:#4acb64">6</span>
         <span class="label">Balloon 6</span>
     </button>
-
 </div>
 
-<p id="hint">
-    Click each balloon once. Sparkles will appear! ✨
-</p>
+<p id="hint">Click each balloon once. Sparkles will appear! ✨</p>
 
+<!-- Birthday page stays hidden until all six balloons are clicked -->
 <section id="message">
 
-    <h2>🎉 Happy Birthday, Kodi Malar! 🎉</h2>
+    <div class="floral-decoration">🌿 🌸 🌿 🌼 🌿</div>
+
+    <h2 class="floral-title">Happy Birthday</h2>
+
+    <!-- KODIMALAR letters are filled with a repeating leafy pattern -->
+    <svg class="name-art" viewBox="0 0 900 220"
+         role="img" aria-label="KODIMALAR written in green leaves and flowers">
+
+        <defs>
+            <pattern id="leaves" width="55" height="48"
+                     patternUnits="userSpaceOnUse">
+                <rect width="55" height="48" fill="#286b32"/>
+
+                <path d="M4 37 Q10 4 30 7 Q27 29 4 37"
+                      fill="#76b943"/>
+                <path d="M4 37 L26 13"
+                      stroke="#d5ed9d" stroke-width="1.5"/>
+
+                <path d="M28 45 Q27 18 51 16 Q49 38 28 45"
+                      fill="#124d27"/>
+                <path d="M28 45 L47 21"
+                      stroke="#a6d76c" stroke-width="1.5"/>
+
+                <path d="M5 7 Q18 0 24 10 Q13 17 5 7"
+                      fill="#a6d76c"/>
+            </pattern>
+
+            <clipPath id="nameClip">
+                <text x="450" y="145"
+                      text-anchor="middle"
+                      font-family="Georgia,serif"
+                      font-weight="900"
+                      font-size="130"
+                      textLength="850"
+                      lengthAdjust="spacingAndGlyphs">KODIMALAR</text>
+            </clipPath>
+
+            <g id="flower">
+                <ellipse cx="0" cy="-10" rx="6" ry="11" fill="#ff85b5"/>
+                <ellipse cx="10" cy="-3" rx="6" ry="11"
+                         transform="rotate(60 10 -3)" fill="#fff7ed"/>
+                <ellipse cx="6" cy="8" rx="6" ry="11"
+                         transform="rotate(120 6 8)" fill="#ff8dbb"/>
+                <ellipse cx="-6" cy="8" rx="6" ry="11"
+                         transform="rotate(40 -6 8)" fill="#fff7ed"/>
+                <ellipse cx="-10" cy="-3" rx="6" ry="11"
+                         transform="rotate(-60 -10 -3)" fill="#ff85b5"/>
+                <circle cx="0" cy="0" r="5" fill="#ffd54f"/>
+            </g>
+        </defs>
+
+        <rect x="15" y="0" width="870" height="190"
+              fill="url(#leaves)" clip-path="url(#nameClip)"/>
+
+        <!-- Flowers arranged over the leafy letters -->
+        <use href="#flower" x="88" y="83" transform="scale(1.1)"/>
+        <use href="#flower" x="180" y="145" transform="scale(.85)"/>
+        <use href="#flower" x="270" y="70" transform="scale(.8)"/>
+        <use href="#flower" x="365" y="145" transform="scale(1)"/>
+        <use href="#flower" x="455" y="73" transform="scale(.9)"/>
+        <use href="#flower" x="555" y="145" transform="scale(.85)"/>
+        <use href="#flower" x="650" y="75" transform="scale(1)"/>
+        <use href="#flower" x="740" y="145" transform="scale(.85)"/>
+        <use href="#flower" x="825" y="80" transform="scale(1)"/>
+
+        <path d="M40 178 Q450 210 860 178"
+              fill="none" stroke="#438747" stroke-width="3"/>
+
+        <path d="M200 188 Q180 162 164 178
+                 M340 194 Q320 168 304 184
+                 M580 194 Q600 168 616 184
+                 M720 188 Q740 162 756 178"
+              fill="none" stroke="#438747" stroke-width="3"/>
+    </svg>
+
+    <div class="floral-decoration">🌸 🌿 💗 🌿 🌸</div>
 
     <div class="cake">🎂</div>
 
-    <p>Surprise! You popped all six balloons! 💖</p>
+    <div class="floral-message">
+        <p>May your life be as beautiful as a garden,</p>
+        <p>filled with happiness, love, and success.</p>
+        <p>Keep blooming, always! 🌷</p>
+        <p>Wishing you endless smiles and beautiful memories.</p>
+    </div>
 
-    <p>
-        May your day be filled with happiness,
-        laughter, love, and beautiful memories.
-    </p>
-
-    <p>
-        May all your dreams come true.
-        Keep shining and smiling. 🌸
-    </p>
-
-    <h2 style="color:white">
-        Wishing you the happiest birthday ever! 💝
-    </h2>
+    <div class="floral-decoration">🌼 🌿 🦋 🌿 🌼</div>
 
 </section>
 
 <script>
-const buttons = [
-    ...document.querySelectorAll(".balloon-btn")
-];
-
+const buttons = [...document.querySelectorAll(".balloon-btn")];
 const progress = document.getElementById("progress");
 const bar = document.getElementById("bar");
 const hint = document.getElementById("hint");
@@ -291,20 +358,17 @@ const message = document.getElementById("message");
 
 let count = 0;
 
-// Create a burst of sparkles whenever a balloon is clicked.
 function burst(x, y) {
     const symbols = ["✨", "💖", "⭐", "🎉", "💫"];
 
     for (let i = 0; i < 12; i++) {
         const element = document.createElement("span");
-
-        element.textContent = symbols[
-            Math.floor(Math.random() * symbols.length)
-        ];
+        element.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
 
         element.style.cssText =
-            "position:fixed;left:" + x + "px;top:" + y +
-            "px;z-index:20;pointer-events:none;font-size:22px";
+            `position:fixed;left:${x}px;top:${y}px;z-index:20;` +
+            "pointer-events:none;font-size:22px";
 
         document.body.appendChild(element);
 
@@ -317,56 +381,37 @@ function burst(x, y) {
                 opacity: 1
             },
             {
-                transform:
-                    "translate(" +
-                    Math.cos(angle) * distance + "px," +
-                    Math.sin(angle) * distance +
-                    "px) scale(1.3)",
+                transform: `translate(${Math.cos(angle)*distance}px,` +
+                    `${Math.sin(angle)*distance}px) scale(1.3)`,
                 opacity: 0
             }
-        ], {
-            duration: 700,
-            easing: "ease-out"
-        });
+        ], { duration: 700, easing: "ease-out" });
 
         animation.onfinish = () => element.remove();
     }
 }
 
-// Create falling celebration confetti.
 function confetti(amount) {
-    const symbols = [
-        "🎉", "💖", "✨", "🎈", "🌸", "💝", "⭐"
-    ];
+    const symbols = ["🎉", "💖", "✨", "🎈", "🌸", "💝", "⭐"];
 
     for (let i = 0; i < amount; i++) {
         const element = document.createElement("span");
-
         element.className = "confetti";
-        element.textContent = symbols[
-            Math.floor(Math.random() * symbols.length)
-        ];
+        element.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
 
         element.style.left = Math.random() * 100 + "vw";
-        element.style.fontSize =
-            (14 + Math.random() * 18) + "px";
-
+        element.style.fontSize = (14 + Math.random() * 18) + "px";
         element.style.animationDuration =
             (2 + Math.random() * 2.5) + "s";
 
         document.body.appendChild(element);
-
-        element.addEventListener("animationend", () => {
-            element.remove();
-        });
+        element.addEventListener("animationend", () => element.remove());
     }
 }
 
-// Handle balloon clicks.
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-
-        // Prevent the same balloon being counted twice.
         if (button.disabled) return;
 
         button.disabled = true;
@@ -374,16 +419,9 @@ buttons.forEach(button => {
         count++;
 
         const rect = button.getBoundingClientRect();
+        burst(rect.left + rect.width / 2, rect.top + rect.height / 2);
 
-        burst(
-            rect.left + rect.width / 2,
-            rect.top + rect.height / 2
-        );
-
-        // Update the counter and progress bar.
-        progress.textContent =
-            count + " of 6 balloons popped!";
-
+        progress.textContent = count + " of 6 balloons popped!";
         bar.style.width = (count / 6 * 100) + "%";
 
         if (count < 6) {
@@ -391,23 +429,19 @@ buttons.forEach(button => {
                 "Wonderful! " + (6 - count) +
                 " more balloon(s) to go! 🎈";
         } else {
-
-            // Reveal the birthday surprise only after all six clicks.
             hint.textContent =
-                "You did it! Your birthday surprise is unlocked! 🎊";
+                "You did it! Your floral birthday surprise is here! 🌸";
 
-            confetti(45);
+            confetti(50);
 
             setTimeout(() => {
                 message.style.display = "block";
-
                 message.scrollIntoView({
                     behavior: "smooth",
-                    block: "center"
+                    block: "start"
                 });
-
-                confetti(90);
-            }, 450);
+                confetti(100);
+            }, 500);
         }
     });
 });
